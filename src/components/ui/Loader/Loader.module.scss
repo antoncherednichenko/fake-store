@@ -1,0 +1,25 @@
+@import '../../../styles/vars.scss';
+
+.loader {
+    position: relative;
+    width: 100%;
+    font-size: 45px;
+    color: $dark-blue;
+    &__holder {
+        width: max-content;
+        margin: 0 auto;
+        padding: 15px 0;
+    }
+    &__icon {
+        animation: rotating 3s linear infinite;
+    }
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

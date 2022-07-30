@@ -1,10 +1,12 @@
-import './App.css';
+import Goods from "./components/Goods/Goods";
+import AppHeader from "./components/header/Header";
 
 function App() {
   return (
-    <div>
-      
-    </div>
+    <>
+      <AppHeader />
+      <Goods />
+    </>
   );
 }
 
