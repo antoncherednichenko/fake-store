@@ -1,0 +1,12 @@
+
+.list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    li {
+        width: max-content;
+        margin: 0 auto;
+        hr { margin: 10px 0; }
+    }
+}

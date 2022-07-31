@@ -12,11 +12,13 @@ export interface IGood {
 
 interface IInitalState {
     goodsList: IGood[]
+    cartList: IGood[]
     isLoading: boolean
 }
 
 const initialState: IInitalState = {
     goodsList: [],
+    cartList: [],
     isLoading: false
 }
 
@@ -38,7 +40,15 @@ export const getAllProducts = createAsyncThunk(
 const goodsSlice = createSlice({
     name: 'goods',
     initialState,
-    reducers: {},
+    reducers: {
+        addItemToCart: (state, { payload }) => {
+            state.cartList = [...state.cartList, ...state.goodsList.filter(e => e.id === payload)]
+        },
+        removeItemFromCart: (state, { payload }) => {
+            state.cartList = state.cartList.filter(e => e.id !== payload)
+        },
+        resetCartList: state => { state.cartList = [] }
+    },
     extraReducers: builder => {
         builder
             .addCase(getAllProducts.pending, state => { state.isLoading = true })
@@ -50,5 +60,7 @@ const goodsSlice = createSlice({
 
     }
 })
+
+export const { addItemToCart, removeItemFromCart, resetCartList } = goodsSlice.actions
 
 export default goodsSlice.reducer
